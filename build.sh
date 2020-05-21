@@ -27,17 +27,17 @@ docker cp calamari-build:/artifacts ./
 
 cd artifacts
 
-#export GIT_VERSION=$(cat .gitversion.txt)
+export GIT_VERSION=$(cat .gitversion.txt)
 
-#tar --exclude='.gitversion.txt' -cvzf calamari-rhel.6-x64-$GIT_VERSION.tar.gz *
+tar --exclude='.gitversion.txt' -cvzf calamari-rhel.6-x64-$GIT_VERSION.tar.gz *
 
-#if ! [ -d "../artifacts-history" ]; then
-#	mkdir ../artifacts-history
-#fi
+if ! [ -d "../artifacts-history" ]; then
+	mkdir ../artifacts-history
+fi
 
-#cp calamari-rhel.6-x64-$GIT_VERSION.tar.gz ../artifacts-history
+cp calamari-rhel.6-x64-$GIT_VERSION.tar.gz ../artifacts-history
 
-#echo "Created artifacts/calamari-rhel.6-x64-$GIT_VERSION.tar.gz"
-#echo "Copied to artifacts-history/calamari-rhel.6-x64-$GIT_VERSION.tar.gz"
+echo "Created artifacts/calamari-rhel.6-x64-$GIT_VERSION.tar.gz"
+echo "Copied to artifacts-history/calamari-rhel.6-x64-$GIT_VERSION.tar.gz"
 
-#cd ..
+cd ..

@@ -29,7 +29,7 @@ RUN rpm -Uvh /tmp/libunwind-1.1-3.el6.x86_64.rpm
 
 COPY files/dotnet-install.sh /root/
 
-RUN /root/dotnet-install.sh 
+RUN /root/dotnet-install.sh
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=true
 
@@ -51,10 +51,11 @@ RUN git checkout $(cat .gitversion.txt)
 
 WORKDIR /app/source
 
+RUN sed -i -e 's/Include=\"Autofac\"\ Version=\"4.8.0\"/Include=\"Autofac\"\ Version=\"5.2.0\"/g' Calamari/Calamari.csproj
+
 RUN dotnet publish Calamari -c Release -f netcoreapp3.1 -o ./artifacts --self-contained -r rhel.6-x64 /p:Version=$(cat ../.gitversion.txt)
 
-RUN rm -rf /artifacts/* && \
-	mkdir -p /artifacts && \
-	cp -r /app/source/Calamari/artifacts/ / && \
-	cp /app/.gitversion.txt /artifacts && \
-	echo 'copied files to /artifacts'
+RUN mkdir -p /artifacts
+
+RUN cp -R artifacts/* /artifacts/
+RUN cp /app/.gitversion.txt /artifacts/
