@@ -1,3 +1,5 @@
+**NOTE:** This repo is provided without any support, but should be able to get you closer to getting Calamari running on RHEL6. Feel free to submit a PR if you would like to make additions, and they'll be reviewed.
+
 # Calamari builder for Redhat (RHEL 6)
 ## What it does
 Creates a Calamari build for RedHat 6. As the Octopus-supplied Calamari is built against RHEL7, it uses a higher version of `glibc` than is available on RHEL6. This tool will pull down the latest tagged Calamari release and compile it to be compatible with RHEL/CentOS 6 systems.
